@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevenify Engineering Certification</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --primary-tech: #1db954; /* Spotify */
+            --secondary-tech: #ff0000; /* YouTube */
+            --accent-itunes: #fb5a74; /* iTunes */
+            --slate-main: #0f172a;
+            --slate-text: #475569;
+            --border: #e2e8f0;
+            --tech-font: 'JetBrains Mono', monospace;
+            --main-font: 'League Spartan', sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--main-font);
+        }
+
+        .cert-canvas {
+            width: 1000px;
+            height: 680px;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 55px 60px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        /* Decorative Multi-Platform Side Bar */
+        .cert-canvas::after {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, 
+                var(--primary-tech) 0%, 
+                var(--primary-tech) 40%, 
+                var(--secondary-tech) 40%, 
+                var(--secondary-tech) 70%, 
+                var(--accent-itunes) 70%);
+        }
+
+        /* Left Side: Text and Signatures */
+        .cert-details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            padding-right: 40px;
+            padding-left: 10px;
+        }
+
+        /* Right Side: Verification/QR */
+        .cert-verification {
+            flex: 1;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-box {
+            width: 28px;
+            height: 28px;
+            background: var(--slate-main);
+            border-radius: 4px;
+        }
+
+        .brand-name {
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--slate-main);
+            letter-spacing: -0.5px;
+        }
+
+        .ref-id {
+            font-family: var(--tech-font);
+            font-size: 11px;
+            color: var(--primary-tech);
+            background: rgba(29, 185, 84, 0.08);
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -1.5px;
+            color: var(--slate-main);
+        }
+
+        .recipient {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-tech);
+            margin: 15px 0 35px 0;
+            display: inline-block;
+        }
+
+        .summary {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--slate-text);
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .stack-list {
+            margin-top: 40px;
+            font-family: var(--tech-font);
+            font-size: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stack-item {
+            color: #334155;
+            background: #e2e8f0;
+            padding: 8px 14px;
+            border-radius: 4px;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: auto;
+        }
+
+        .sig-box .name { font-weight: 700; font-size: 16px; color: var(--slate-main); }
+        .sig-box .title { font-size: 13px; color: var(--slate-text); margin-top: 4px; }
+
+        /* The dynamic QR Image */
+        .qr-code-img {
+            width: 100px;
+            height: 100px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .verification-text {
+            font-family: var(--tech-font);
+            font-size: 12px;
+            color: var(--slate-text);
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="cert-canvas">
+        <div class="cert-details">
+            <div class="brand-row">
+                <div class="brand">
+                    <div class="brand-box"></div>
+                    <span class="brand-name">STRATOS CODEWORKS</span>
+                </div>
+                <div class="ref-id">REF: SVN-8820-2026</div>
+            </div>
+
+            <div class="header">
+                <h1>Sevenify Media Protocol</h1>
+                <div class="recipient">Suhail p</div>
+                <p class="summary">
+                    For the successful engineering of <b>Sevenify</b>. 
+                    Acknowledged for elite architecture in media streaming, 
+                    optimizing the cross-platform merger of the <b>YouTube Data API v3</b> and <b>iTunes Search API</b>.
+                </p>
+            </div>
+
+            <div class="stack-list">
+                <div class="stack-item">HTML5.Semantic</div>
+                <div class="stack-item">Async.REST_API</div>
+                <div class="stack-item">Audio.Stream.Protocol</div>
+            </div>
+
+            <div class="signatures">
+                <div class="sig-box">
+                    <div class="name">Elena Vance</div>
+                    <div class="title">Chief Technical Architect</div>
+                </div>
+                <div class="sig-box" style="text-align: right;">
+                    <div class="name">Aria Chen</div>
+                    <div class="title">Platform Integrity</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-verification">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Verified:%20[DEVELOPER NAME]%20built%20Sevenify" 
+                 alt="Certificate QR Code"
+                 class="qr-code-img">
+            
+            <div class="verification-text">
+                <strong>Credential Verification</strong><br>
+                Protocol SVN-8820<br>
+                Date: April 28, 2026<br>
+                Authenticated Deployment
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

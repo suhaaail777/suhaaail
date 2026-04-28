@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akai Deployment Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono&display=swap');
+
+        :root {
+            --glass-bg: rgba(10, 15, 25, 0.7);
+            --neon-blue: #00f2ff;
+            --deep-space: #020617;
+            --text-silver: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--deep-space);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 242, 255, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.05) 0px, transparent 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+        }
+
+        /* The Main Glass Card */
+        .glass-cert {
+            width: 950px;
+            height: 600px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* High-tech Glowing Border */
+        .glass-cert::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 12px;
+            height: 24px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .protocol-status {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--neon-blue);
+            background: rgba(0, 242, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            margin-top: 60px;
+        }
+
+        .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--text-silver);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 52px;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to bottom right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .recipient {
+            font-size: 32px;
+            color: var(--neon-blue);
+            font-weight: 400;
+            margin: 10px 0 30px 0;
+        }
+
+        .summary {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-silver);
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .stats-grid {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Decorative "Akai" vertical text */
+        .side-text {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: rotate(90deg);
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            letter-spacing: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-cert">
+        <div class="side-text">VIRTUAL</div>
+
+        <div class="header">
+            <div class="brand">
+                <div class="brand-icon"></div>
+                CYBERNETIC INDUSTRIES
+            </div>
+            <div class="protocol-status">PRTC-ID: CBRI_2026_04</div>
+        </div>
+
+        <div class="main-content">
+            <div class="label">Project Deployment Verified</div>
+            <h1 class="title">System Architect</h1>
+            <div class="recipient">Developer: Suhail p</div>
+            
+            <p class="summary">
+                For the innovative design and logic integration of the <strong>Akai</strong> Virtual Assistant. 
+                This acknowledgment confirms the successful execution of Python-based neural scripting and 
+                modular command interfaces.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-value">Python v3.12</span>
+                <span class="stat-label">Core Engine</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">AI_LEVEL_01</span>
+                <span class="stat-label">Neural Rating</span>
+            </div>
+            <div class="stat-item" style="text-align: right;">
+                <span class="stat-value">APR 05 2026</span>
+                <span class="stat-label">Authorization Date</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

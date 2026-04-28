@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT TRAINING CERTIFICATION | EHPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --it-blue: #00d2ff; /* Training Blue */
+            --it-bg: #050505;
+            --it-border: #222;
+            --it-text: #e0e0e0;
+        }
+
+        body {
+            background-color: #0c0c0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--it-text);
+        }
+
+        .training-cert {
+            width: 1000px;
+            height: 680px;
+            background: var(--it-bg);
+            border: 1px solid var(--it-border);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 80px rgba(0, 210, 255, 0.07);
+        }
+
+        /* Top Progress Bar Style */
+        .status-header {
+            height: 40px;
+            background: #111;
+            border-bottom: 1px solid var(--it-border);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--it-blue);
+        }
+
+        .main-body {
+            padding: 50px 60px;
+            flex: 1;
+        }
+
+        .training-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 3px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 10px 0 30px 0;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .name-block {
+            margin-bottom: 40px;
+        }
+
+        .recipient-name {
+            font-size: 60px;
+            font-weight: 800;
+            color: var(--it-blue);
+            margin: 0;
+        }
+
+        /* Training Progress Visual */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 800px;
+        }
+
+        .module-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check { color: var(--it-blue); font-weight: bold; }
+
+        .progress-container {
+            margin-top: 40px;
+            width: 100%;
+            height: 4px;
+            background: #1a1a1a;
+            position: relative;
+        }
+
+        .progress-fill {
+            width: 100%;
+            height: 100%;
+            background: var(--it-blue);
+            box-shadow: 0 0 10px var(--it-blue);
+        }
+
+        /* Footer with Advanced QR */
+        .footer {
+            height: 160px;
+            border-top: 1px solid var(--it-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            background: #080808;
+        }
+
+        /* Varied QR Look (Digital Fingerprint) */
+        .qr-fingerprint {
+            width: 85px;
+            height: 85px;
+            border: 2px solid var(--it-blue);
+            padding: 5px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            transform: rotate(45deg);
+        }
+        .qr-fingerprint div { background: var(--it-blue); opacity: 0.8; }
+        .qr-fingerprint div:nth-child(3n) { opacity: 0.1; }
+
+        .auth-data {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #444;
+            margin-left: 40px;
+        }
+
+        .sig-box { text-align: right; }
+        .sig-line { width: 200px; height: 1px; background: #333; margin-bottom: 10px; margin-left: auto; }
+        .sig-title { font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; }
+
+    </style>
+</head>
+<body>
+
+    <div class="training-cert">
+        <div class="status-header">
+            [ TRAINING_MODULE: COMPLETED ] &nbsp; // &nbsp; DEPT: IT_INFRASTRUCTURE &nbsp; // &nbsp; SESSION: 2026_Q2
+        </div>
+
+        <div class="main-body">
+            <div class="training-label">OFFICIAL TRAINING CREDENTIAL</div>
+            <h1 class="title">Technical Competency Certificate</h1>
+
+            <div class="name-block">
+                <span style="font-family: 'JetBrains Mono'; font-size: 14px; color: #666;">CERTIFIED TRAINEE:</span>
+                <h2 class="recipient-name">Suhail P</h2>
+            </div>
+
+            <div class="module-grid">
+                <div class="module-item"><span class="check">[✓]</span> Fullstack Flask Development</div>
+                <div class="module-item"><span class="check">[✓]</span> PostgreSQL Architecture</div>
+                <div class="module-item"><span class="check">[✓]</span> License Manager Logic</div>
+                <div class="module-item"><span class="check">[✓]</span> Institutional Security Protocols</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-fill"></div>
+                <span style="position:absolute; right:0; top:-25px; font-family:'JetBrains Mono'; font-size:10px; color:var(--it-blue);">STATUS: 100% COMPLETE</span>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 15px; color: #888; line-height: 1.6;">
+                This document verifies that the above individual has successfully undergone specialized technical 
+                training for the <b>License Manager</b> project under the supervision of the 
+                <b>Edappal Hospitals Pvt Ltd</b> IT Department.
+            </p>
+        </div>
+
+        <div class="footer">
+            <div style="display: flex; align-items: center;">
+                <div class="qr-fingerprint">
+                    <div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+                <div class="auth-data">
+                    VERIFICATION_ID: EH-TR-099<br>
+                    ISSUED_BY: IT_ADMIN_NODE<br>
+                    TIMESTAMP: 25.04.2026
+                </div>
+            </div>
+
+            <div class="sig-box">
+                <div class="sig-line"></div>
+                <div class="sig-title">Senior Technical Lead</div>
+                <div style="font-size: 9px; color: #444; margin-top: 4px;">IT DEPT // EDAPPAL HOSPITALS</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

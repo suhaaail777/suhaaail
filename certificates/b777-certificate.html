@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B777.WEB | Project Certification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --b777-blue: #0062ff;
+            --b777-dark: #050505;
+            --b777-slate: #1a1a1a;
+            --b777-text: #ffffff;
+            --b777-muted: #888888;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .cert-container {
+            width: 1000px;
+            height: 650px;
+            background: var(--b777-dark);
+            color: var(--b777-text);
+            position: relative;
+            padding: 60px;
+            box-sizing: border-box;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
+        }
+
+        /* Abstract "777" background element */
+        .cert-container::after {
+            content: "777";
+            position: absolute;
+            right: -20px;
+            bottom: -50px;
+            font-size: 300px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.02);
+            z-index: 0;
+            user-select: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Top Navigation Style Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            padding-bottom: 20px;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand span {
+            color: var(--b777-blue);
+        }
+
+        .status-pill {
+            background: rgba(0, 98, 255, 0.1);
+            color: var(--b777-blue);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 98, 255, 0.2);
+        }
+
+        /* Main Body */
+        .body-section {
+            margin-top: 60px;
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--b777-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .name {
+            font-size: 72px;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -3px;
+        }
+
+        .description {
+            font-size: 19px;
+            color: var(--b777-muted);
+            line-height: 1.6;
+            max-width: 700px;
+            margin-top: 20px;
+        }
+
+        .stack-row {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .tech-tag {
+            background: var(--b777-slate);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            border: 1px solid #333;
+        }
+
+        /* Verification & Footer */
+        .footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .verification-block {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* CSS QR Visual */
+        .qr-placeholder {
+            width: 70px;
+            height: 70px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+        .qr-placeholder div { background: #000; height: 100%; }
+        .qr-placeholder div:nth-child(3n) { visibility: hidden; }
+
+        .id-details {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .signature-group {
+            text-align: right;
+        }
+
+        .sig-line {
+            width: 200px;
+            height: 45px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding-bottom: 4px;
+        }
+
+        .sig-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .sig-title {
+            color: var(--b777-muted);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cert-container">
+        <div class="content">
+            <div class="header">
+                <div class="brand">B777<span>.WEB</span></div>
+                <div class="status-pill">System Verified</div>
+            </div>
+
+            <div class="body-section">
+                <div class="label">Project Excellence Certification</div>
+                <h1 class="name">Suhail P</h1>
+                <p class="description">
+                    This document validates the successful architecture and deployment of the 
+                    <b>Flask-Driven Backend Infrastructure</b>. The project met all rigorous 
+                    standards for performance, RESTful compliance, and secure data handling 
+                    within the b777.web production environment.
+                </p>
+
+                <div class="stack-row">
+                    <div class="tech-tag">FLASK 3.0</div>
+                    <div class="tech-tag">JINJA2</div>
+                    <div class="tech-tag">POSTGRESQL</div>
+                    <div class="tech-tag">REST API</div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="verification-block">
+                    <div class="qr-placeholder">
+                        <div></div><div></div><div></div><div></div>
+                        <div></div><div></div><div></div><div></div>
+                        <div></div><div></div><div></div><div></div>
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                    <div class="id-details">
+                        REF: B777-SYS-0992<br>
+                        HASH: 0x777_SUHAIL_FLASK_SECURE<br>
+                        DATE: 2026.04.25
+                    </div>
+                </div>
+
+                <div class="signature-group">
+                    <div class="sig-line">
+                        <svg width="140" height="40" viewBox="0 0 190 58" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.88">
+                            <!-- B - tall stem with two bumps -->
+                            <path d="M6 44 L6 10 C6 10, 18 10, 20 15 C22 20, 18 25, 13 26 C20 27, 24 32, 21 38 C18 44, 10 46, 6 44" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- flow B to o -->
+                            <path d="M21 38 C23 41, 25 39, 27 37" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+                            <!-- o -->
+                            <path d="M27 37 C27 27, 33 22, 39 26 C45 30, 45 42, 39 46 C33 50, 27 44, 27 37" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- flow o to b -->
+                            <path d="M45 36 C47 34, 49 31, 51 29" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+                            <!-- b - tall ascender with forward loop -->
+                            <path d="M51 10 L51 46 M51 38 C51 28, 55 24, 61 25 C67 26, 69 34, 67 40 C65 46, 59 48, 54 44" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- flow b to b2 -->
+                            <path d="M67 38 C69 40, 71 38, 73 36" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+                            <!-- b2 -->
+                            <path d="M73 10 L73 46 M73 38 C73 28, 77 24, 83 25 C89 26, 91 34, 89 40 C87 46, 81 48, 76 44" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- y - with descender curl -->
+                            <path d="M93 26 C93 38, 95 46, 97 50 C99 54, 103 54, 104 50 M104 26 L104 46" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- tail flourish -->
+                            <path d="M104 40 C110 38, 118 40, 126 37 C132 35, 136 38, 142 36" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                            <!-- underline sweep -->
+                            <path d="M4 54 C60 50, 110 52, 155 54" stroke="#0062ff" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <div class="sig-name">Bobby</div>
+                    <div class="sig-title">Systems Director</div>
+                    <div class="sig-title">b777.web Engineering</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
