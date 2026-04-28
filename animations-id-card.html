@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – Suhaaail</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d12;
+    --card-bg: #12121c;
+    --card-border: rgba(255,255,255,0.08);
+    --accent: #6c63ff;
+    --accent2: #a78bfa;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --glow: rgba(108,99,255,0.35);
+  }
+
+  body {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  /* subtle noise grain overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── LANYARD ── */
+  .scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  @keyframes sway {
+    0%,100% { transform: rotate(-3deg); }
+    50%      { transform: rotate(3deg); }
+  }
+
+  /* clip + hook */
+  .hook-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .clip {
+    width: 18px; height: 28px;
+    background: linear-gradient(160deg, #aaa 0%, #555 100%);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 2px 6px rgba(0,0,0,0.6);
+  }
+  .clip::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; left: 50%; transform: translateX(-50%);
+    width: 8px; height: 14px;
+    background: linear-gradient(160deg, #999 0%, #444 100%);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  }
+
+  /* string / lanyard */
+  .lanyard {
+    width: 4px;
+    height: 70px;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-top: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover .lanyard {
+    height: 75px;
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.7);
+  }
+  
+  .card:active .lanyard {
+    height: 72px;
+    background: linear-gradient(180deg, #252525 0%, #151515 50%, #050505 100%);
+  }
+
+  /* ── CARD ── */
+  .card {
+    width: 260px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(108,99,255,0.15),
+      0 20px 60px rgba(0,0,0,0.7),
+      0 0 80px rgba(108,99,255,0.12);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    -webkit-tap-highlight-color: rgba(108,99,255,0.3);
+    touch-action: manipulation;
+  }
+
+  .card:hover {
+    box-shadow:
+      0 0 0 1px rgba(108,99,255,0.8),
+      0 45px 100px rgba(0,0,0,1),
+      0 0 200px rgba(108,99,255,0.6);
+    transform: perspective(800px) rotateX(25deg) rotateY(-15deg) translateY(-30px) scale(1.03);
+  }
+
+  .card:active {
+    transform: perspective(800px) rotateX(12deg) rotateY(-8deg) translateY(-15px) scale(1.015);
+    transition: all 0.05s ease;
+  }
+
+  @media (hover: none) {
+    .card:hover {
+      transform: perspective(800px) rotateX(25deg) rotateY(-15deg) translateY(-30px) scale(1.03);
+    }
+  }
+
+  /* shimmer stripe */
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: -120%;
+    width: 80%; height: 100%;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+    animation: shimmer 3.5s ease-in-out infinite;
+    pointer-events: none; z-index: 5;
+  }
+  @keyframes shimmer {
+    0%   { left: -120%; }
+    60%  { left: 140%; }
+    100% { left: 140%; }
+  }
+
+  /* top accent bar */
+  .card-accent-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), #e879f9);
+    animation: barflow 4s linear infinite;
+    background-size: 200%;
+  }
+  @keyframes barflow {
+    0%   { background-position: 0%; }
+    100% { background-position: 200%; }
+  }
+
+  /* logo row */
+  .card-logo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px 8px;
+  }
+  .card-org {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+  }
+  .card-year {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* photo area */
+  .card-photo-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 14px;
+    position: relative;
+  }
+  .card-photo-ring {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--accent), #e879f9);
+    animation: ringpulse 3s ease-in-out infinite;
+    box-shadow: 0 0 24px rgba(108,99,255,0.5);
+  }
+  @keyframes ringpulse {
+    0%,100% { box-shadow: 0 0 20px rgba(108,99,255,0.4); }
+    50%      { box-shadow: 0 0 40px rgba(167,139,250,0.7); }
+  }
+  .card-photo {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e1e30, #2e2560);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--accent2);
+    letter-spacing: -1px;
+    overflow: hidden;
+    position: relative;
+  }
+  /* subtle inner glow on photo */
+  .card-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* name */
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    padding: 0 16px;
+    line-height: 1.2;
+  }
+  .card-role {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 5px;
+    padding: 0 16px;
+  }
+
+  /* divider */
+  .card-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(108,99,255,0.3), transparent);
+    margin: 14px 18px;
+  }
+
+  /* stats row */
+  .card-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px 16px;
+    gap: 6px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .stat-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-val span {
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  /* badge pill */
+  .card-badge {
+    margin: 0 18px 18px;
+    background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(167,139,250,0.15));
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: blink 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.3; }
+  }
+  .badge-text {
+    font-size: 12px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+  .badge-text strong {
+    color: var(--accent2);
+    font-weight: 500;
+  }
+
+  /* bottom tag chip */
+  .card-chip {
+    background: linear-gradient(135deg, var(--accent), #7c3aed);
+    margin: 0 18px 18px;
+    border-radius: 8px;
+    padding: 9px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chip-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .chip-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .chip-icon {
+    font-size: 24px;
+    opacity: 0.9;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <!-- hook at top -->
+  <div class="hook-wrap">
+    <div class="clip"></div>
+    <div class="lanyard"></div>
+  </div>
+
+  <!-- ID Card -->
+  <div class="card">
+    <div class="card-accent-bar"></div>
+
+    <div class="card-logo-row">
+      <span class="card-org">Python Developer</span>
+      <span class="card-year">2024 - 2026</span>
+    </div>
+
+    <div class="card-photo-wrap">
+      <div class="card-photo-ring">
+        <div class="card-photo">
+          <img src="profile-photo.png" alt="Profile" style="width: 140%; height: 140%; object-fit: cover; border-radius: 50%; transform: scale(1.5) translateY(-15px);" onerror="this.style.background='linear-gradient(135deg, #ff6b6b, #4ecdc4)'; this.alt='Image not found'; console.error('Image failed to load:', this.src);">
+        </div>
+      </div>
+    </div>
+
+    <div class="card-name">Suhaaail</div>
+    <div class="card-role"> Data Scientist & web app Developer</div>
+
+    <div class="card-divider"></div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-val">10<span>+</span></div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">3<span>+</span></div>
+        <div class="stat-label">Years Exp</div>
+      </div>
+      
+    </div>
+
+    <div class="card-badge">
+      <div class="badge-dot"></div>
+      <div class="badge-text">
+        <strong>Available for Consulting</strong><br>
+        AI/ML · Web app development  · Data science
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

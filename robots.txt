@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://suhaaail777.github.io/suhaail/sitemap.xml
+
+# Allow specific important files
+Allow: /index.html
+Allow: /manifest.json
+Allow: /sw.js
+
+# Block unnecessary file types
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$

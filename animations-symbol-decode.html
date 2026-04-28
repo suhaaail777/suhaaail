@@ -1,0 +1,166 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+}
+.wrap {
+  display: flex; align-items: center; justify-content: center;
+  padding: 3rem 1.5rem; min-height: 260px;
+}
+.card {
+  background: #000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  width: 100%; max-width: 580px;
+}
+.row {
+  display: flex; align-items: center; gap: 0;
+  font-family: 'Courier New', monospace; font-size: 26px;
+  color: #fff; min-height: 40px;
+  letter-spacing: 0.04em; flex-wrap: wrap;
+}
+.ch {
+  display: inline-block;
+  transition: color 0.12s;
+  min-width: 0.6em; text-align: center;
+}
+.ch.scrambling { color: #666; }
+.ch.resolved { color: #fff; }
+.ch.space { min-width: 0.5em; }
+.meta {
+  margin-top: 1rem;
+  font-family: 'Courier New', monospace; font-size: 12px;
+  color: #666;
+  display: flex; align-items: center; gap: 12px;
+}
+.bar-wrap {
+  flex: 1; height: 2px;
+  background: #333; border-radius: 2px; overflow: hidden;
+}
+.bar { height: 100%; background: #fff; width: 0%; transition: width 0.08s linear; border-radius: 2px; }
+.pct { min-width: 30px; text-align: right; color: #fff; }
+</style>
+
+<div class="wrap">
+  <div class="card">
+    <div class="row" id="row"></div>
+    <div class="meta">
+      <div class="bar-wrap"><div class="bar" id="bar"></div></div>
+      <div class="pct" id="pct">0%</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const phrases = [
+  "Suhaaail"
+];
+
+const symbols = [
+  ..."αβγδεζηθλμξπρστφψω",
+  ..."ΑΒΓΔΕΖΗΘΛΜΞΠΡΣΤΦΨΩ",
+  ..."ابجدهوزحطيكلمنسعفصقرشت",
+  ..."अआइईउऊएऐओक्षत्रज्ञ",
+  ..."あいうえおかきくけこさしすせそ",
+  ..."의가나다라마바사아자차카타파하",
+  ..."АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЭЮЯабвгдежз",
+  ..."ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ",
+  ..."⌘⌥⇧⌃⏎⌫⎋⇥␣⌤⌦⇪",
+  ..."{}[]()<>!@#$%^&*-_+=|\\/:;\"'`~",
+  ..."01010110101001010110",
+  ..."∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑−∓∔∕∖∗∘∙√∛∜∝∞",
+];
+
+const allSyms = symbols.join('');
+
+function randSym() {
+  return allSyms[Math.floor(Math.random() * allSyms.length)];
+}
+
+let phraseIdx = 0;
+let spans = [];
+let resolvedCount = 0;
+let scrambleTimer = null;
+let resolveTimer = null;
+let loopTimer = null;
+
+const rowEl = document.getElementById('row');
+const barEl = document.getElementById('bar');
+const pctEl = document.getElementById('pct');
+
+function buildSpans(text) {
+  rowEl.innerHTML = '';
+  spans = [];
+  for (let i = 0; i < text.length; i++) {
+    const s = document.createElement('span');
+    s.className = 'ch ' + (text[i] === ' ' ? 'space scrambling' : 'scrambling');
+    s.textContent = text[i] === ' ' ? '\u00a0' : randSym();
+    rowEl.appendChild(s);
+    spans.push({ el: s, target: text[i], resolved: text[i] === ' ' });
+  }
+}
+
+function scrambleTick() {
+  spans.forEach(s => {
+    if (!s.resolved && s.target !== ' ') {
+      s.el.textContent = randSym();
+    }
+  });
+  scrambleTimer = setTimeout(scrambleTick, 60);
+}
+
+function resolveNext(order) {
+  if (resolvedCount >= order.length) {
+    clearTimeout(scrambleTimer);
+    barEl.style.width = '100%';
+    pctEl.textContent = '100%';
+    loopTimer = setTimeout(nextPhrase, 900);
+    return;
+  }
+  const idx = order[resolvedCount];
+  const s = spans[idx];
+  s.resolved = true;
+  s.el.textContent = s.target;
+  s.el.className = 'ch resolved';
+
+  resolvedCount++;
+  const pct = Math.round((resolvedCount / order.length) * 100);
+  barEl.style.width = pct + '%';
+  pctEl.textContent = pct + '%';
+
+  resolveTimer = setTimeout(() => resolveNext(order), 38 + Math.random() * 30);
+}
+
+function startPhrase(text) {
+  clearTimeout(scrambleTimer);
+  clearTimeout(resolveTimer);
+  clearTimeout(loopTimer);
+  resolvedCount = 0;
+  barEl.style.width = '0%';
+  pctEl.textContent = '0%';
+  buildSpans(text);
+
+  const order = [...Array(text.length).keys()]
+    .filter(i => text[i] !== ' ')
+    .sort(() => Math.random() - 0.5);
+
+  setTimeout(() => {
+    scrambleTick();
+    setTimeout(() => resolveNext(order), 300);
+  }, 120);
+}
+
+function nextPhrase() {
+  phraseIdx = (phraseIdx + 1) % phrases.length;
+  startPhrase(phrases[phraseIdx]);
+}
+
+startPhrase(phrases[0]);
+</script>
